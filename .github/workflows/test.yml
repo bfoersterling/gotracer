@@ -1,7 +1,9 @@
-- name: test
+name: test
 
-  jobs:
-    test:
+on: [push, pull_request]
+
+jobs:
+  test:
     runs-on: ubuntu-24.04
     container: golang:alpine
     steps:
