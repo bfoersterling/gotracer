@@ -59,6 +59,7 @@ Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
+- detect when no `*.go` files are in `go_dir`
 - detect unused functions
 - option to show all (used) functions (all possible entrypoints)
 - deal with init() functions \
