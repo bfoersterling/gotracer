@@ -1,3 +1,5 @@
 gotracer
 gotracer.test
 *.out
+
+dist/
