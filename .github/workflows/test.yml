@@ -1,0 +1,10 @@
+- name: test
+
+  jobs:
+    test:
+    runs-on: ubuntu-24.04
+    container: golang:alpine
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: go test -v
