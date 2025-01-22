@@ -61,6 +61,6 @@ Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 - detect when no `*.go` files are in `go_dir`
 - detect unreachable functions (only possible when external packages are processed as well)
-- option to show all functions (all possible entrypoints)
+- option to show all functions (all possible entrypoints) => show all FuncDecls
 - deal with init() functions \
 (have to be artificially included when generating `fcall`s)
