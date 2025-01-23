@@ -39,4 +39,7 @@ Maybe use the `Defs` field of the `types.Info` struct.
 
 OR
 
-The FuncDecl (`Name` + `Recv` fields)
+The FuncDecl (`Name` + `Recv` fields) \
+=> `Recv` is just a pointer to an `ast.FieldList` and contains a slice of `ast.Fields`.\
+Those `ast.Fields` contain `Names` which are `ast.Idents` that can return a `Name` (string).\
+So you would need two nested loops to get the receiver?
