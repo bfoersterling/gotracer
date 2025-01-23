@@ -30,3 +30,13 @@ since you cannot redeclare the same function just with different return values.
 Then you still have the package name/path.\
 You should be able to cut it by using the `value.Pkg()` function.\
 This is ok since parsing a dir with mixed packages will throw an error while parsing.
+
+#### all possible entrypoints
+
+How to get all possible entrypoints?
+
+Maybe use the `Defs` field of the `types.Info` struct.
+
+OR
+
+The FuncDecl (`Name` + `Recv` fields)
