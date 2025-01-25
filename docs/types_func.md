@@ -17,7 +17,13 @@ type Func struct {
 
 #### get receiver
 
-Its only possible to get the receiver via the `FullName()` method:
+Its possible to get the receiver via the `FullName()` method
 ```
 FullName: (*main.cli_args).parse
+```
+as part of a string with other stuff.
+
+You can get just the receiver with the package like this:
+```
+Signature().Recv().Type(): *foo.foo
 ```
