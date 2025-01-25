@@ -111,4 +111,29 @@ func (args *cli_args)parse() {
 			t.Fatalf("This element %v should not exist.", get_tree_string(v))
 		}
 	}
+
+	// 2
+
+	afps, fset, err = parse_dir_afps("test_files/library")
+
+	if err != nil {
+		t.Fatalf("parse_dir_afps failed with err:\n"+
+			"%v\n", err)
+	}
+
+	fc, err = new_func_center(fset, afps)
+
+	for _, value := range fc.func_defs {
+		switch get_tree_string(value) {
+		case "(foo).combine_bar":
+		case "(*foo).set_default":
+		case "(foo).print":
+		case "unused":
+		case "bar":
+		default:
+			t.Fatalf("This element %v should not exist.", get_tree_string(value))
+		}
+	}
+
+	// 3 - mocking
 }

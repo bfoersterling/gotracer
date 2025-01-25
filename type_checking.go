@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"go/ast"
 	"go/importer"
 	"go/token"
 	"go/types"
+	"log"
 	"strings"
 )
 
@@ -65,13 +65,15 @@ func get_func_info(fset *token.FileSet, afps []*ast.File) (map[*ast.Ident]types.
 }
 
 func get_tree_string(obj types.Object) string {
-	raw_obj := fmt.Sprintf("%v", obj)
+	tf, ok := obj.(*types.Func)
 
-	tree_string := strings.TrimLeft(raw_obj, "func ")
+	if !ok {
+		log.Fatal("obj is not of type *types.Func.")
+	}
 
 	// remove function arguments and return values
 	args_rets := strings.TrimLeft(obj.Type().String(), "func")
-	tree_string = strings.ReplaceAll(tree_string, args_rets, "")
+	tree_string := strings.ReplaceAll(tf.FullName(), args_rets, "")
 
 	// remove package name
 	tree_string = strings.ReplaceAll(tree_string, obj.Pkg().Name()+".", "")
