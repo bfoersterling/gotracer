@@ -47,18 +47,23 @@ func get_func_info(fset *token.FileSet, afps []*ast.File) (map[*ast.Ident]types.
 	}
 
 	for key, value := range info.Uses {
-		if strings.HasPrefix(value.String(), "func") {
-			filtered_uses[key] = value
+		tf, ok := value.(*types.Func)
+
+		if !ok {
+			continue
 		}
+
+		filtered_uses[key] = tf
 	}
 
 	for key, value := range info.Defs {
-		if value == nil {
+		tf, ok := value.(*types.Func)
+
+		if !ok {
 			continue
 		}
-		if strings.HasPrefix(value.String(), "func") {
-			filtered_defs[key] = value
-		}
+
+		filtered_defs[key] = tf
 	}
 
 	return filtered_defs, filtered_uses, err
