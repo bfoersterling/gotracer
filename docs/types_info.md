@@ -1,3 +1,5 @@
+# types.Info (struct)
+
 ## types.Info.Uses Map
 
 #### General Map Overview
@@ -33,11 +35,11 @@ The `Pos()` value of the map key `*ast.Ident`:
 ```
           |
           V
-	flags.parse()
+    flags.parse()
 
     |
     V
-	parse()
+    parse()
 ```
 
 #### value.Pos()
@@ -64,3 +66,22 @@ The `End()` value of the key:
 #### value.End()
 
 Lead to panic due to nil pointer.
+
+
+## types.Info Defs Map
+
+#### key.Pos()
+
+```
+     |
+     V
+func main() {
+```
+
+#### value.Pos()
+
+```
+     |
+     V
+func main() {
+```
