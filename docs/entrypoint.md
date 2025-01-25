@@ -36,7 +36,10 @@ This is ok since parsing a dir with mixed packages will throw an error while par
 How to get all possible entrypoints?
 
 Maybe use the `Defs` field of the `types.Info` struct.\
-=> functions that are never called are not included in fcalls
+=> functions that are never called are not included in fcalls \
+=> like the main function you need to include all FuncDecls that are never \
+called in fcalls \
+(maybe first load all FuncDecls in fcalls -> then update the fields if they are used)
 
 OR
 
