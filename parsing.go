@@ -2,19 +2,25 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/token"
 )
 
 func parse_dir(go_dir string) ([]ast.File, *token.FileSet, error) {
+	var err error
+
 	files := get_gofiles(go_dir)
+
+	if len(files) == 0 {
+		err = fmt.Errorf("No .go files found in directory.\n")
+		return nil, nil, err
+	}
 
 	ast_files := make([]ast.File, 0)
 
 	fset := token.NewFileSet()
-
-	var err error
 
 	var package_name string
 
@@ -41,13 +47,18 @@ func parse_dir(go_dir string) ([]ast.File, *token.FileSet, error) {
 }
 
 func parse_dir_afps(go_dir string) ([]*ast.File, *token.FileSet, error) {
+	var err error
+
 	files := get_gofiles(go_dir)
+
+	if len(files) == 0 {
+		err = fmt.Errorf("No .go files found in directory.\n")
+		return nil, nil, err
+	}
 
 	ast_files := make([]*ast.File, 0)
 
 	fset := token.NewFileSet()
-
-	var err error
 
 	var package_name string
 
