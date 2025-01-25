@@ -71,9 +71,7 @@ func get_tree_string(obj types.Object) string {
 		log.Fatal("obj is not of type *types.Func.")
 	}
 
-	// remove function arguments and return values
-	args_rets := strings.TrimLeft(obj.Type().String(), "func")
-	tree_string := strings.ReplaceAll(tf.FullName(), args_rets, "")
+	tree_string := tf.FullName()
 
 	// remove package name
 	tree_string = strings.ReplaceAll(tree_string, obj.Pkg().Name()+".", "")
