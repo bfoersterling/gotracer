@@ -64,3 +64,51 @@ func (args *cli_args)parse() {
 		t.Fatalf("There should be 119 info.Defs.\n")
 	}
 }
+
+func Test_get_tree_string(t *testing.T) {
+	// 1
+	srcs := make(map[string]string, 0)
+
+	srcs["main.go"] = `package main
+
+func main() {
+	cli_args := cli_args {
+		true,
+	}
+
+	cli_args.parse()
+
+	parse()
+}`
+
+	srcs["cli_args.go"] = `package main
+
+type cli_args struct {
+	verbose bool
+}
+
+func parse() string {
+	return "hello"
+}
+
+func (args *cli_args)parse() {
+}`
+
+	afps, fset, err := strmap_to_ast(srcs)
+
+	if err != nil {
+		t.Fatalf("strmap_to_ast() should not return an error in this test case.\n")
+	}
+
+	fc, err := new_func_center(fset, afps)
+
+	for _, v := range fc.func_defs {
+		switch get_tree_string(v) {
+		case "main":
+		case "parse":
+		case "(*cli_args).parse":
+		default:
+			t.Fatalf("This element %v should not exist.", get_tree_string(v))
+		}
+	}
+}
