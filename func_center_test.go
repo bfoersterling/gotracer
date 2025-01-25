@@ -49,7 +49,11 @@ func (args *cli_args)parse() {
 	}
 
 	if len(fc.func_uses) != 2 {
-		t.Fatalf("fc.uses should contain 2 uses.\n")
+		t.Fatalf("fc.func_uses should contain 2 uses.\n")
+	}
+
+	if len(fc.func_defs) != 3 {
+		t.Fatalf("fc.func_defs should contain 3 elements.\n")
 	}
 }
 
