@@ -35,7 +35,8 @@ This is ok since parsing a dir with mixed packages will throw an error while par
 
 How to get all possible entrypoints?
 
-Maybe use the `Defs` field of the `types.Info` struct.
+Maybe use the `Defs` field of the `types.Info` struct.\
+=> functions that are never called are not included in fcalls
 
 OR
 
