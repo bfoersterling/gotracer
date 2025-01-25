@@ -39,7 +39,8 @@ Maybe use the `Defs` field of the `types.Info` struct.\
 => functions that are never called are not included in fcalls \
 => like the main function you need to include all FuncDecls that are never \
 called in fcalls \
-(maybe first load all FuncDecls in fcalls -> then update the fields if they are used)
+(maybe first load all FuncDecls in fcalls -> then update the fields if they are used) \
+This would also fix the problem that `init()` functions are not included at the moment.
 
 OR
 
