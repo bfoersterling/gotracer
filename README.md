@@ -59,8 +59,10 @@ Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
-- detect when no `*.go` files are in `go_dir`
-- detect unused functions
-- option to show all (used) functions (all possible entrypoints)
+- include all `FuncDecl`s or `types.Info.Defs` in `fcall`s
+- detect uncalled functions
+- detect unreachable functions (only possible when external packages are processed as well)
 - deal with init() functions \
-(have to be artificially included when generating `fcall`s)
+(have to be artificially included when generating `fcall`s) \
+=> will be fixed when all functions are in `fcall`s
+- maybe include external calls

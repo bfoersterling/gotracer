@@ -10,6 +10,8 @@ import (
 
 type func_center struct {
 	fds []ast.FuncDecl
+	// all types.Info.Defs that contain func info
+	func_defs map[*ast.Ident]types.Object
 	// the func_uses field contains a types.Info.Uses
 	// map from which everything except function info
 	// has been filtered out
@@ -22,7 +24,7 @@ func new_func_center(fset *token.FileSet, afps []*ast.File) (func_center, error)
 
 	fc.fds = get_fds_from_afps(afps)
 
-	fc.func_uses, err = get_func_uses(fset, afps)
+	fc.func_defs, fc.func_uses, err = get_func_info(fset, afps)
 
 	return fc, err
 }

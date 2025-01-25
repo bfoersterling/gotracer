@@ -20,6 +20,8 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
+    flags:
+      - -trimpath
 
 archives:
   - format: tar.gz
