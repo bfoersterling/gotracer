@@ -14,3 +14,10 @@ type Func struct {
 #### implements
 
 `types.Object`
+
+#### get receiver
+
+Its only possible to get the receiver via the `FullName()` method:
+```
+FullName: (*main.cli_args).parse
+```
