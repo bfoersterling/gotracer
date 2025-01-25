@@ -78,10 +78,22 @@ Lead to panic due to nil pointer.
 func main() {
 ```
 
+```
+             |
+             V
+func (f *foo)bar() {
+```
+
 #### value.Pos()
 
 ```
      |
      V
 func main() {
+```
+
+```
+             |
+             V
+func (f *foo)bar() {
 ```
