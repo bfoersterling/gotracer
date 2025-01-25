@@ -1,4 +1,17 @@
-## types.Object
+## types.Object (interface)
+
+#### implemented by
+
+```
+*Builtin
+*Const
+*Func
+*Label
+*Nil
+*PkgName
+*TypeName
+*Var
+```
 
 #### Type()
 

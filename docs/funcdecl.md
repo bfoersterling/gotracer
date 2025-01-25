@@ -1,6 +1,6 @@
 ## ast.FuncDecl
 
-#### TLDR
+#### position matching (TLDR)
 
 `my_funcdecl.Name.Pos()` seems to match the `value.Pos()` of the `Uses` types map.
 
