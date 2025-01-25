@@ -48,4 +48,19 @@ func (args *cli_args)parse() {
 	if len(info.Uses) != 8 {
 		t.Fatalf("There should be 8 Uses maps.\n")
 	}
+
+	// 2 - check Defs of test_files/makefile_parser
+
+	afps, fset, err = parse_dir_afps("test_files/makefile_parser")
+
+	if err != nil {
+		t.Fatalf("Parsing dir test_files/makefile_parser failed with err:\n"+
+			"%v\n", err)
+	}
+
+	info, err = get_type_info(fset, afps)
+
+	if len(info.Defs) != 119 {
+		t.Fatalf("There should be 119 info.Defs.\n")
+	}
 }

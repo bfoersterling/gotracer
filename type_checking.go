@@ -14,6 +14,7 @@ import (
 // So this function should be used for local packages.
 func get_type_info(fset *token.FileSet, afs []*ast.File) (*types.Info, error) {
 	info := &types.Info{
+		Defs: make(map[*ast.Ident]types.Object),
 		Uses: make(map[*ast.Ident]types.Object),
 	}
 
