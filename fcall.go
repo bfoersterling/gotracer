@@ -27,10 +27,12 @@ type fcall struct {
 	// it should be equal to FuncDecl.Name.String() then
 	call_name   string
 	call_lparen token.Pos
-	is_method   bool
-	uses_key    *ast.Ident
-	uses_value  types.Object
-	fd          *ast.FuncDecl
+	// key.Pos() or value.Pos() from types.Info Defs field
+	defs_pos   token.Pos
+	is_method  bool
+	uses_key   *ast.Ident
+	uses_value types.Object
+	fd         *ast.FuncDecl
 }
 
 func get_fcall_from_slice(fcalls []fcall, name string) (fcall, error) {

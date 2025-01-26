@@ -5,7 +5,7 @@ import (
 	"go/ast"
 	"go/token"
 	"go/types"
-	"slices"
+	"log"
 )
 
 type func_center struct {
@@ -61,35 +61,56 @@ func (fc func_center) get_funcdecl(call *ast.CallExpr) (*ast.FuncDecl, error) {
 func (fc func_center) get_fcalls() ([]fcall, error) {
 	fcalls := make([]fcall, 0)
 	var err error
-	main_inserted := false
 
 	for ukey, uvalue := range fc.func_uses {
-		for _, funcdecl := range fc.fds {
-			// artificially insert a main call since the Uses map
-			// does not contain calls to main
-			if (funcdecl.Name.String() == "main") && (!main_inserted) {
-				main_elem := fcall{
-					call_name:   "main",
-					call_lparen: 0,
-					is_method:   false,
-					uses_key:    nil,
-					uses_value:  nil,
-					fd:          &funcdecl,
-				}
-				fcalls = slices.Insert(fcalls, 0, main_elem)
-				main_inserted = true
-				continue
-			}
-			if uvalue.Pos() == funcdecl.Name.Pos() {
+		for _, dvalue := range fc.func_defs {
+			if uvalue == dvalue {
 				fcall_elem := fcall{
 					call_name:   get_tree_string(uvalue),
 					call_lparen: ukey.End(),
-					is_method:   is_method(funcdecl),
+					defs_pos:    dvalue.Pos(),
 					uses_key:    ukey,
 					uses_value:  uvalue,
-					fd:          &funcdecl,
+				}
+
+				fcalls = append(fcalls, fcall_elem)
+				break
+			}
+		}
+	}
+
+	called := false
+	for _, funcdecl := range fc.fds {
+		for i, v := range fcalls {
+			if funcdecl.Name.Pos() == v.defs_pos {
+				// function is actually called
+				fcalls[i].fd = &funcdecl
+				fcalls[i].is_method = is_method(funcdecl)
+				called = true
+				continue
+			}
+
+			if i == (len(fcalls)-1) && !called {
+				fcall_elem := fcall{
+					fd:        &funcdecl,
+					is_method: is_method(funcdecl),
 				}
 				fcalls = append(fcalls, fcall_elem)
+			}
+		}
+		called = false
+	}
+
+	// uncalled functions still need to get info from Defs
+	for _, value := range fc.func_defs {
+		for i, fcall := range fcalls {
+			if fcall.fd == nil {
+				log.Fatalf("DEBUG: empty fd field! (fcall: %v)\n", fcall)
+			}
+			if value.Pos() == fcall.fd.Name.Pos() {
+				fcalls[i].call_name = get_tree_string(value)
+				fcalls[i].defs_pos = value.Pos()
+				break
 			}
 		}
 	}
