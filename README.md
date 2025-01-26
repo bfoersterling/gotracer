@@ -59,10 +59,6 @@ Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
-- include all `FuncDecl`s or `types.Info.Defs` in `fcall`s
-- detect uncalled functions
+- option to list uncalled functions
 - detect unreachable functions (only possible when external packages are processed as well)
-- deal with init() functions \
-(have to be artificially included when generating `fcall`s) \
-=> will be fixed when all functions are in `fcall`s
 - maybe include external calls
