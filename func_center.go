@@ -87,9 +87,13 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 				fcalls[i].fd = &funcdecl
 				fcalls[i].is_method = is_method(funcdecl)
 				called = true
+				// don't break because the function can be called
+				// multiple times and every call needs to be appended
 				continue
 			}
 
+			// last element and still not found a matching fcall
+			// append a new fcall element for the uncalled function
 			if i == (len(fcalls)-1) && !called {
 				fcall_elem := fcall{
 					fd:        &funcdecl,
