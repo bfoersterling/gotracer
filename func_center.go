@@ -111,6 +111,10 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 			if fcall.fd == nil {
 				log.Fatalf("DEBUG: empty fd field! (fcall: %v)\n", fcall)
 			}
+			if fcall.call_name != "" {
+				// called functions do not need to be refilled
+				continue
+			}
 			if value.Pos() == fcall.fd.Name.Pos() {
 				fcalls[i].call_name = get_tree_string(value)
 				fcalls[i].defs_pos = value.Pos()
