@@ -23,6 +23,23 @@ Key: bool (cli_args.go:4:10)		Value: type bool (-)
 Key: string	(cli_args.go:7:14)		Value: type string (-)
 ```
 
+#### get from Uses to Defs and the other way round
+
+The `*types.Object` **value** of a Uses map points to the same object \
+as the `*types.Object` **value** of the corresponding Defs map:
+```
+fc.func_uses:
+parse (0xc000076720): func (*main.cli_args).parse() (0xc0003961e0)
+parse (0xc000076760): func main.parse() string (0xc000396000)
+
+fc.func_defs:
+parse (0xc000076920): func (*main.cli_args).parse() (0xc0003961e0)
+main (0xc000076680): func main.main() (0xc0003937a0)
+parse (0xc000076820): func main.parse() string (0xc000396000)
+```
+
+And since both are pointers they can easily be compared with a `==` operator.
+
 #### main function
 
 Since the `main` function is never explicitly called in a Go program \
