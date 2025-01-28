@@ -1,0 +1,13 @@
+digraph {
+	node [shape=record]
+
+	pointer1 [label="<f0>ast.Ident|<f1>0x00004400"]
+	pointer2 [label="<f0>ast.Ident|<f1>0x0c887700"]
+	defskey [label="<f0>Defs Key|<f1>*ast.Ident"]
+	useskey [label="<f0>Uses Key|<f1>*ast.Ident"]
+	astfuncdeclname [label="<f0>ast.FuncDecl.Name|<f1>*ast.Ident"]
+
+	astfuncdeclname:f1 -> pointer1:f1:e
+	defskey:f1:s -> pointer1:f1:n
+	useskey:f1 -> pointer2:f1
+}
