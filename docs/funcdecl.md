@@ -1,5 +1,9 @@
 ## ast.FuncDecl
 
+#### Connect Defs Map To FuncDecl
+
+[!image defs_funcdecl](graphs/defs_key_and_funcdecl_name.svg)
+
 #### position matching (TLDR)
 
 `my_funcdecl.Name.Pos()` seems to match the `value.Pos()` of the `Uses` types map.
