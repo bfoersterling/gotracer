@@ -2,7 +2,7 @@
 
 #### Connect Defs Map To FuncDecl
 
-[!image defsfuncdecl](./graphs/defs_key_and_funcdecl_name.svg)
+[!image info](./graphs/defs_key_and_funcdecl_name.svg)
 
 #### position matching (TLDR)
 
