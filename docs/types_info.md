@@ -1,5 +1,9 @@
 # types.Info (struct)
 
+## overview
+
+![image info](./graphs/types_info_map_values.svg)
+
 ## types.Info.Uses Map
 
 #### General Map Overview
