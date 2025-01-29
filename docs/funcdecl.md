@@ -1,6 +1,6 @@
 ## ast.FuncDecl
 
-#### Connect Defs Map To FuncDecl
+#### Connection to types.Info Map Keys
 
 ![image defs_to_funcdecl](./graphs/defs_key_and_funcdecl_name.svg)
 
