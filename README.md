@@ -59,6 +59,7 @@ Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
+- check if `fcall` field `defs_pos` can be replaced by the Def key of type `*ast.Ident`
 - option to list uncalled functions
 - detect unreachable functions (only possible when external packages are processed as well)
 - maybe include external calls
