@@ -4,9 +4,11 @@
 
 ![image defs_to_funcdecl](./graphs/defs_key_and_funcdecl_name.svg)
 
-#### position matching (TLDR)
+#### position matching (get from Uses to FuncDecl) (TLDR)
 
-`my_funcdecl.Name.Pos()` seems to match the `value.Pos()` of the `Uses` types map.
+`my_funcdecl.Name.Pos()` matches the `value.Pos()` of the `Uses` types map.
+
+This allows you to get directly from **Uses to FuncDecl**.
 
 #### .Pos()
 
