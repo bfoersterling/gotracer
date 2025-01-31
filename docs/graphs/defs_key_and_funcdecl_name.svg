@@ -11,7 +11,7 @@
 <!-- pointer1 -->
 <g id="node1" class="node">
 <title>pointer1</title>
-<polygon fill="none" stroke="black" points="82.5,-0.5 82.5,-36.5 228.5,-36.5 228.5,-0.5 82.5,-0.5"/>
+<polygon fill="lightgrey" stroke="black" points="82.5,-0.5 82.5,-36.5 228.5,-36.5 228.5,-0.5 82.5,-0.5"/>
 <text text-anchor="middle" x="113.75" y="-13.45" font-family="Times,serif" font-size="14.00">ast.Ident</text>
 <polyline fill="none" stroke="black" points="145,-0.5 145,-36.5"/>
 <text text-anchor="middle" x="186.75" y="-13.45" font-family="Times,serif" font-size="14.00">0x00004400</text>
@@ -19,7 +19,7 @@
 <!-- pointer2 -->
 <g id="node2" class="node">
 <title>pointer2</title>
-<polygon fill="none" stroke="black" points="365.88,-0.5 365.88,-36.5 511.12,-36.5 511.12,-0.5 365.88,-0.5"/>
+<polygon fill="lightgrey" stroke="black" points="365.88,-0.5 365.88,-36.5 511.12,-36.5 511.12,-0.5 365.88,-0.5"/>
 <text text-anchor="middle" x="397.12" y="-13.45" font-family="Times,serif" font-size="14.00">ast.Ident</text>
 <polyline fill="none" stroke="black" points="428.38,-0.5 428.38,-36.5"/>
 <text text-anchor="middle" x="469.75" y="-13.45" font-family="Times,serif" font-size="14.00">0x0c887700</text>
@@ -27,7 +27,7 @@
 <!-- defskey -->
 <g id="node3" class="node">
 <title>defskey</title>
-<polygon fill="none" stroke="black" points="0,-73.5 0,-109.5 137,-109.5 137,-73.5 0,-73.5"/>
+<polygon fill="lightgrey" stroke="black" points="0,-73.5 0,-109.5 137,-109.5 137,-73.5 0,-73.5"/>
 <text text-anchor="middle" x="33.88" y="-86.45" font-family="Times,serif" font-size="14.00">Defs Key</text>
 <polyline fill="none" stroke="black" points="67.75,-73.5 67.75,-109.5"/>
 <text text-anchor="middle" x="102.38" y="-86.45" font-family="Times,serif" font-size="14.00">*ast.Ident</text>
@@ -41,7 +41,7 @@
 <!-- useskey -->
 <g id="node4" class="node">
 <title>useskey</title>
-<polygon fill="none" stroke="black" points="366.62,-73.5 366.62,-109.5 504.38,-109.5 504.38,-73.5 366.62,-73.5"/>
+<polygon fill="lightgrey" stroke="black" points="366.62,-73.5 366.62,-109.5 504.38,-109.5 504.38,-73.5 366.62,-73.5"/>
 <text text-anchor="middle" x="400.88" y="-86.45" font-family="Times,serif" font-size="14.00">Uses Key</text>
 <polyline fill="none" stroke="black" points="435.12,-73.5 435.12,-109.5"/>
 <text text-anchor="middle" x="469.75" y="-86.45" font-family="Times,serif" font-size="14.00">*ast.Ident</text>
@@ -55,7 +55,7 @@
 <!-- astfuncdeclname -->
 <g id="node5" class="node">
 <title>astfuncdeclname</title>
-<polygon fill="none" stroke="black" points="154.88,-73.5 154.88,-109.5 348.12,-109.5 348.12,-73.5 154.88,-73.5"/>
+<polygon fill="lightgrey" stroke="black" points="154.88,-73.5 154.88,-109.5 348.12,-109.5 348.12,-73.5 154.88,-73.5"/>
 <text text-anchor="middle" x="216.88" y="-86.45" font-family="Times,serif" font-size="14.00">ast.FuncDecl.Name</text>
 <polyline fill="none" stroke="black" points="278.88,-73.5 278.88,-109.5"/>
 <text text-anchor="middle" x="313.5" y="-86.45" font-family="Times,serif" font-size="14.00">*ast.Ident</text>
