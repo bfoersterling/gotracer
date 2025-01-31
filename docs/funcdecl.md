@@ -2,8 +2,6 @@
 
 #### Connection to types.Info Map Keys
 
-![image info](./graphs/defs_key_and_funcdecl_name.svg)
-
 #### position matching (get from Uses to FuncDecl) (TLDR)
 
 `my_funcdecl.Name.Pos()` matches the `value.Pos()` of the `Uses` types map.
