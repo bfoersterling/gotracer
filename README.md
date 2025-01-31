@@ -1,7 +1,7 @@
 # gotracer
 
 A calltree for local Go projects.\
-Does not include library calls.
+Does not support calls to external libraries.
 
 ## usage
 
@@ -32,7 +32,7 @@ The default entry point is the `main` function.
 To specify another entry point.\
 Which is the first call that is found when traversing function calls:
 ```
-$ ./gotracer -d . -e calltree
+$ gotracer -d . -e calltree
 calltree
 |--get_fcall_from_slice
 |--(fcall).get_children
@@ -43,23 +43,32 @@ calltree
 
 For methods make sure to quote the name of the function call:
 ```
-./gotracer -e '(cli_args).evaluate' -d test_files/makefile_parser/
+gotracer -e '(cli_args).evaluate' -d test_files/makefile_parser/
 ```
+
+To list all possible entryponts:
+```
+gotracer -l
+```
+
+#### implementation
+
+This program exclusively uses `Go`'s standard library.\
+There are no external dependencies.
 
 #### performance
 
-This program uses the type checker that is part of the Go standard library in `go/types`.
+`gotracer` uses the type checker that is part of the Go standard library in `go/types`.
 
 The `Check` method from the `go/types` package initially runs for all Go files.\
 That is the performance bottleneck.
 
-Writing a custom type checker for structs is currently not an option.
+Writing a custom type checker for is currently not an option.
 
-Another option might be to use [pointer analysis](https://en.wikipedia.org/wiki/Pointer_analysis).
+Another option would be to use [pointer analysis](https://en.wikipedia.org/wiki/Pointer_analysis).
 
 ## TODO
 
-- check if `fcall` field `defs_pos` can be replaced by the Def key of type `*ast.Ident`
 - option to list uncalled functions
-- detect unreachable functions (only possible when external packages are processed as well)
+- option to list unreachable functions (needs correct entrypoint and will not work with external libs)
 - maybe include external calls
