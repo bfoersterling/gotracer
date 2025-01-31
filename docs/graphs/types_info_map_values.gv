@@ -4,9 +4,9 @@ digraph {
 
 	types_object [shape=record, label="{<f0>types.Object (Interface)|{<f1>types.Func|<f2>0x00f0bb1022}}"];
 
-	defs [shape=record, label="{<f0>types.Info.Defs (Map)|{<f1> *ast.Ident|<f2> *types.Object}}"];
-	uses [shape=record, label="{<f0>types.Info.Uses (Map)|{<f1> *ast.Ident|<f2> *types.Object}}"];
+	defs [shape=record, label="{<f0>types.Info.Defs (Map)|{<f1> *ast.Ident|<f2> types.Object}}"];
+	uses [shape=record, label="{<f0>types.Info.Uses (Map)|{<f1> *ast.Ident|<f2> types.Object}}"];
 
-	defs:f2 -> types_object:f2:s
-	uses:f2 -> types_object:f2:e
+	types_object:f2:e -> defs:f2
+	types_object:f2:e -> uses:f2
 }
