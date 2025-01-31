@@ -3,7 +3,7 @@
 A calltree for local Go projects.\
 Does not support calls to external libraries.
 
-## usage
+## Usage
 
 Show tree of Go function calls in the current dir:
 ```
@@ -51,12 +51,12 @@ To list all possible entryponts:
 gotracer -l
 ```
 
-#### implementation
+#### Implementation
 
 This program exclusively uses `Go`'s standard library.\
 There are no external dependencies.
 
-#### performance
+#### Performance
 
 `gotracer` uses the type checker that is part of the Go standard library in `go/types`.
 
