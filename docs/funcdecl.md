@@ -2,7 +2,7 @@
 
 #### Connection to types.Info Map Keys
 
-![image info](.graphs/defs_key_and_funcdecl_name.svg)
+![image info](./graphs/defs_key_and_funcdecl_name.svg)
 
 #### position matching (get from Uses to FuncDecl) (TLDR)
 
