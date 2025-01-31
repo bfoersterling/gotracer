@@ -63,12 +63,12 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 	var err error
 
 	for ukey, uvalue := range fc.func_uses {
-		for _, dvalue := range fc.func_defs {
+		for dkey, dvalue := range fc.func_defs {
 			if uvalue == dvalue {
 				fcall_elem := fcall{
 					call_name:   get_tree_string(uvalue),
 					call_lparen: ukey.End(),
-					defs_pos:    dvalue.Pos(),
+					defs_key:    dkey,
 					uses_key:    ukey,
 					uses_value:  uvalue,
 				}
@@ -82,7 +82,7 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 	called := false
 	for _, funcdecl := range fc.fds {
 		for i, v := range fcalls {
-			if funcdecl.Name.Pos() == v.defs_pos {
+			if funcdecl.Name == v.defs_key {
 				// function is actually called
 				fcalls[i].fd = &funcdecl
 				fcalls[i].is_method = is_method(funcdecl)
@@ -106,7 +106,7 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 	}
 
 	// uncalled functions still need to get info from Defs
-	for _, value := range fc.func_defs {
+	for key, value := range fc.func_defs {
 		for i, fcall := range fcalls {
 			if fcall.fd == nil {
 				log.Fatalf("DEBUG: empty fd field! (fcall: %v)\n", fcall)
@@ -115,9 +115,9 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 				// called functions do not need to be refilled
 				continue
 			}
-			if value.Pos() == fcall.fd.Name.Pos() {
+			if key == fcall.fd.Name {
 				fcalls[i].call_name = get_tree_string(value)
-				fcalls[i].defs_pos = value.Pos()
+				fcalls[i].defs_key = key
 				break
 			}
 		}

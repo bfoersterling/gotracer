@@ -8,18 +8,7 @@ import (
 	"slices"
 )
 
-// Problem: main is not in the uses map
-//=> write constructor to artificially construct main fcall
-//and add it as the first element of the fcall_slice
-//but only if the ast.FuncDecl for main is found
-//(needs to be tested for libraries without a main function)
-
-// Maybe have an easy handle like a token.Pos value
-// that helps when searching for a specific object.
-// Or a string representation of the types.Object.
-//
 // including a CallExpr here might be too expensive
-// but you could use a slice of structs as a lookup table
 type fcall struct {
 	// call_name: string to be used in the tree
 	// for example (*cli_args)my_method
@@ -27,8 +16,9 @@ type fcall struct {
 	// it should be equal to FuncDecl.Name.String() then
 	call_name   string
 	call_lparen token.Pos
-	// key.Pos() or value.Pos() from types.Info Defs field
-	defs_pos   token.Pos
+	// key from types.Info.Defs map
+	defs_key *ast.Ident
+	//defs_value types.Object
 	is_method  bool
 	uses_key   *ast.Ident
 	uses_value types.Object
