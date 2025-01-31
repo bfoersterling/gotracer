@@ -1,8 +1,14 @@
 ## ast.FuncDecl
 
-#### position matching (TLDR)
+#### Connection to types.Info Map Keys
 
-`my_funcdecl.Name.Pos()` seems to match the `value.Pos()` of the `Uses` types map.
+![image info](./graphs/defs_key_and_funcdecl_name.svg)
+
+#### position matching (get from Uses to FuncDecl) (TLDR)
+
+`my_funcdecl.Name.Pos()` matches the `value.Pos()` of the `Uses` types map.
+
+This allows you to get directly from **Uses to FuncDecl**.
 
 #### .Pos()
 

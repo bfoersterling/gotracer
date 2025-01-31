@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -126,7 +127,7 @@ func (args *cli_args)parse() {
 	}
 }
 
-func Test_get_fcalls(t *testing.T) {
+func Test_func_center_get_fcalls(t *testing.T) {
 	// 1
 	srcs := make(map[string]string, 0)
 
@@ -173,6 +174,9 @@ func (args *cli_args)parse() {
 	fcalls, _ := fc.get_fcalls()
 
 	if len(fcalls) != 3 {
+		for _, v := range fcalls {
+			fmt.Printf("%+v\n", v)
+		}
 		t.Fatalf("3 fcalls should be returned and not %d.\n", len(fcalls))
 	}
 
