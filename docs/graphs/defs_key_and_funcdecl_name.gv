@@ -1,5 +1,5 @@
 digraph {
-	node [shape=record]
+	node [shape=record style=filled fillcolor=lightgrey]
 
 	pointer1 [label="<f0>ast.Ident|<f1>0x00004400"]
 	pointer2 [label="<f0>ast.Ident|<f1>0x0c887700"]
