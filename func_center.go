@@ -69,6 +69,7 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 					call_name:   get_tree_string(uvalue),
 					call_lparen: ukey.End(),
 					defs_key:    dkey,
+					defs_value:  dvalue,
 					uses_key:    ukey,
 					uses_value:  uvalue,
 				}
@@ -118,6 +119,7 @@ func (fc func_center) get_fcalls() ([]fcall, error) {
 			if key == fcall.fd.Name {
 				fcalls[i].call_name = get_tree_string(value)
 				fcalls[i].defs_key = key
+				fcalls[i].defs_value = value
 				break
 			}
 		}

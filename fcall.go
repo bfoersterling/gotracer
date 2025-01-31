@@ -18,7 +18,8 @@ type fcall struct {
 	call_lparen token.Pos
 	// key from types.Info.Defs map
 	defs_key *ast.Ident
-	//defs_value types.Object
+	// value from types.Info.Defs map
+	defs_value types.Object
 	is_method  bool
 	uses_key   *ast.Ident
 	uses_value types.Object
