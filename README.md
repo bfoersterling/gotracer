@@ -3,6 +3,23 @@
 A calltree for local Go projects.\
 Does not support calls to external libraries.
 
+## Installation
+
+Download the latest release
+
+OR
+
+```
+make
+sudo make install
+```
+
+OR
+
+```
+go install
+```
+
 ## Usage
 
 Show tree of Go function calls in the current dir:
