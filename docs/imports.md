@@ -54,3 +54,19 @@ go env -w GOPATH=$HOME/go
 From "The Go Programming Language" (Alan A. A. Donovan, Brian W. Kernighan):
 > The `go env` command prints the effective values of the environment variables \
 relevant to the toolchain, including the default values for the missing ones.
+
+#### assumptions about the user
+
+The user of `gotracer` will most likely be a Go developer and thus have \
+a Go installation on their system.
+
+Then it is possible to use `GOROOT` and `GOPATH` on the system.\
+Otherwise you would need to download the entire standard library and \
+external packages because `go/parser` can only parse local files and dirs, \
+but not directly from a URL.
+
+#### possible solutions
+
+- set `GOROOT` and `GOPATH` environment variables on runtime to whatever \
+`go env GOROOT` and `go env GOPATH` output
+=> if Go is not installed then this operation should result in an error
