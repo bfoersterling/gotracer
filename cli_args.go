@@ -11,6 +11,7 @@ type cli_args struct {
 	go_dir           string
 	entrypoint       string
 	list_entrypoints bool
+	version          bool
 }
 
 func get_cli_args() cli_args {
@@ -22,12 +23,19 @@ func get_cli_args() cli_args {
 	flag.StringVar(&args.entrypoint, "entrypoint", "main", "entry point for the call tree")
 	flag.BoolVar(&args.list_entrypoints, "l", false, "list all possible entry points")
 	flag.BoolVar(&args.list_entrypoints, "list", false, "list all possible entry points")
+	flag.BoolVar(&args.version, "V", false, "print version")
+	flag.BoolVar(&args.version, "version", false, "print version")
 	flag.Parse()
 
 	return args
 }
 
 func (args cli_args) evaluate() {
+	if args.version {
+		fmt.Printf("%s %s, commit: %s, build at: %s.\n", os.Args[0], version, commit, date)
+		os.Exit(0)
+	}
+
 	if len(os.Args) > 1 && os.Args[1] == "." {
 		flag.Usage()
 		os.Exit(1)
