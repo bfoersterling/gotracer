@@ -2,6 +2,8 @@
 
 https://go.dev/wiki/SettingGOPATH
 
+https://pkg.go.dev/runtime#GOROOT
+
 #### general problem
 
 Binaries built with:
