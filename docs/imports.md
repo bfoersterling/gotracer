@@ -4,6 +4,19 @@ https://go.dev/wiki/SettingGOPATH
 
 #### general problem
 
+Binaries built with:
+```
+go build -trimpath
+```
+will not work.
+```
+2025/02/09 18:19:11 new_func_center() failed with err:
+./ast_conversions.go:4:2: could not import errors (can't find import: "errors": cannot find package "errors" in any of:
+	($GOROOT not set)
+	/home/user/go/src/errors (from $GOPATH))
+```
+
+
 When you install this program as a self contained binary \
 where shall it search for the imported libraries?
 
