@@ -29,3 +29,9 @@ func New(ctxt *build.Context, fset *token.FileSet, packages map[string]*types.Pa
     os functions. The file set is used to track position information of package
     files; and imported packages are added to the packages map.
 ```
+
+You cannot use this package directly.\
+They seem to be for the compiler and are not accessible from the outside:
+```
+main.go:6:2: use of internal package go/internal/srcimporter not allowed
+```
