@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"go/ast"
 	"go/importer"
 	"go/token"
@@ -28,6 +29,7 @@ func get_type_info(fset *token.FileSet, afs []*ast.File) (*types.Info, error) {
 	_, err := conf.Check(pkg_name, fset, afs, info)
 
 	if err != nil {
+		err = fmt.Errorf("conf.Check failed: " + err.Error())
 		return nil, err
 	}
 

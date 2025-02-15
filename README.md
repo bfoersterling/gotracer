@@ -5,10 +5,6 @@ Does not support calls to external libraries.
 
 ## Installation
 
-Download the latest release
-
-OR
-
 ```
 make
 sudo make install
@@ -19,6 +15,8 @@ OR
 ```
 go install
 ```
+
+(Compiled binaries from releases currently do not work.)
 
 ## Usage
 

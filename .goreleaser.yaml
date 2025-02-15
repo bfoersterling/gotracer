@@ -20,8 +20,8 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
-    flags:
-      - -trimpath
+    gcflags:
+      - -trimpath="$(pwd)"
 
 archives:
   - format: binary
