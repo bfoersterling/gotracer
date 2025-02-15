@@ -5,18 +5,18 @@ Does not support calls to external libraries.
 
 ## Installation
 
+Download the latest release
+```
+wget https://github.com/bfoersterling/gotracer/releases/latest/download/gotracer_linux_amd64 -O gotracer
+chmod +x gotracer
+sudo cp -v gotracer /usr/local/bin/.
+```
+
+Or build it:
 ```
 make
 sudo make install
 ```
-
-OR
-
-```
-go install
-```
-
-(Compiled binaries from releases currently do not work.)
 
 ## Usage
 
