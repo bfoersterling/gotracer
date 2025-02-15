@@ -84,7 +84,8 @@ Another option would be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
-- make output when entrypoint is not found more user friendly
+- make output when entrypoint is not found more user friendly \
+(maybe add `debug` flag)
 - option to list uncalled functions
 - option to list unreachable functions (needs correct entrypoint and will not work with external libs)
 - maybe include external calls
