@@ -136,6 +136,8 @@ func Test_silent_dirtree(t *testing.T) {
 }
 
 func Test_silent_calltree(t *testing.T) {
+	// 1
+
 	afps, fset, err := parse_dir_afps("test_files/makefile_parser")
 
 	if err != nil {
@@ -165,6 +167,27 @@ func Test_silent_calltree(t *testing.T) {
 		"      |  `--(*statement).parse\n" +
 		"      `--has_relevant_target\n" +
 		"         `--get_special_targets\n"
+
+	if tree_string != expected_result {
+		t.Fatalf("tree_string and expected_result differ.\n"+
+			"tree_string:\n%+v\n"+
+			"expected_result:\n%v\n", tree_string, expected_result)
+	}
+
+	// 2
+	afps, fset, err = parse_dir_afps("test_files/one_func")
+
+	if err != nil {
+		t.Fatalf("parse_dir_afps failed with err:\n%v\n", err)
+	}
+
+	tree_string, err = silent_calltree(fset, afps)
+
+	if err != nil {
+		t.Fatalf("silent_calltree failed with err:\n%v\n", err)
+	}
+
+	expected_result = "main\n"
 
 	if tree_string != expected_result {
 		t.Fatalf("tree_string and expected_result differ.\n"+
