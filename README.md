@@ -84,7 +84,7 @@ Another option would be to use [pointer analysis](https://en.wikipedia.org/wiki/
 
 ## TODO
 
-- fix bug - programs with only one function
+- make output when entrypoint is not found more user friendly
 - option to list uncalled functions
 - option to list unreachable functions (needs correct entrypoint and will not work with external libs)
 - maybe include external calls
