@@ -9,4 +9,4 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: go test -v
+      - run: go test -v -gcflags=-trimpath="$(pwd)"

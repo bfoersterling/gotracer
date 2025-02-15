@@ -1,10 +1,10 @@
 BINARY=gotracer
 
 all:
-	go build
+	go build -gcflags=-trimpath="$(pwd)"
 
 test:
-	go test -v
+	go test -v -gcflags=-trimpath="$(pwd)"
 
 install:
 	sudo cp -v "${BINARY}" /usr/local/bin/.
