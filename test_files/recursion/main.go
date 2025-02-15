@@ -2,5 +2,5 @@ package main
 
 func main() {
 	foo()
-	rec_func()
+	rec_func("my string")
 }

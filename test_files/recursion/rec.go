@@ -9,7 +9,7 @@ func foo() {
 func rec_func(bar string) {
 	foo()
 	if bar == "bar" {
-		rec_func()
+		rec_func("bar")
 	}
 	foo()
 }
