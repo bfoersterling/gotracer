@@ -103,9 +103,6 @@ func silent_dirtree(fset *token.FileSet, afs []ast.File) string {
 
 // it does not seem to make sense to return errors in recursive functions
 func calltree(writer io.Writer, fcalls []fcall, parent_func string, prefix string) {
-	// need different functions
-	// need to lookup token.Pos and search after that in fcalls
-
 	// use fcalls as lookup table to get fcall from fname
 	parent_fcall, err := get_fcall_from_slice(fcalls, parent_func)
 
