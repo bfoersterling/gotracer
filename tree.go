@@ -8,6 +8,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 )
 
 func filetree(fset *token.FileSet, af ast.File) {
@@ -51,6 +52,17 @@ func verbose_calltree(fset *token.FileSet, afps []*ast.File, entrypoint string) 
 		log.Fatalf("func_center.get_fcalls() failed with err:\n%v\n", err)
 	}
 
+	_, err = get_fcall_from_slice(fcalls, entrypoint)
+
+	if err != nil {
+		if strings.Contains(err.Error(), "No fcall with call_name") {
+			fmt.Printf("%s: Function %q was not found.\n", os.Args[0], entrypoint)
+			os.Exit(10)
+		} else {
+			panic(err)
+		}
+	}
+
 	fmt.Printf(entrypoint + "\n")
 
 	calltree(os.Stdout, fcalls, entrypoint, "")
@@ -91,15 +103,11 @@ func silent_dirtree(fset *token.FileSet, afs []ast.File) string {
 
 // it does not seem to make sense to return errors in recursive functions
 func calltree(writer io.Writer, fcalls []fcall, parent_func string, prefix string) {
-	// need different functions
-	// need to lookup token.Pos and search after that in fcalls
-
 	// use fcalls as lookup table to get fcall from fname
 	parent_fcall, err := get_fcall_from_slice(fcalls, parent_func)
 
 	if err != nil {
-		log.Fatalf("get_fcall_from_slice failed with err:\n%v\n"+
-			"It was called like this: get_fcall_from_slice(fcalls, %v)\n", err, parent_func)
+		panic(err)
 	}
 
 	fcall_children := parent_fcall.get_children(fcalls)
