@@ -23,6 +23,9 @@ func list_uncalled_funcs(fset *token.FileSet, afps []*ast.File) string {
 	}
 
 	for _, fcall := range fcalls {
+		if fcall.call_name == "main" {
+			continue
+		}
 		if fcall.uses_key == nil {
 			uncalled_funcs = append(uncalled_funcs, fcall.call_name)
 		}

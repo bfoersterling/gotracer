@@ -14,7 +14,6 @@ func Test_list_uncalled_funcs(t *testing.T) {
 	result_string := list_uncalled_funcs(fset, afps)
 
 	expected_string := "dont_call_this\n" +
-		"main\n" +
 		"never_used"
 
 	if result_string != expected_string {
