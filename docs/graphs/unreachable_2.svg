@@ -73,7 +73,7 @@
 <title>func_c&#45;&gt;func_d:f0</title>
 <path fill="none" stroke="black" d="M283.81,-179.24C283.7,-167.95 283.57,-152.58 283.52,-137.71"/>
 <polygon fill="black" stroke="black" points="287.02,-138.01 283.5,-128.01 280.02,-138.02 287.02,-138.01"/>
-<text text-anchor="middle" x="299.77" y="-147.7" font-family="Times,serif" font-size="14.00">called</text>
+<text text-anchor="middle" x="314.77" y="-147.7" font-family="Times,serif" font-size="14.00">used to call</text>
 </g>
 </g>
 </svg>

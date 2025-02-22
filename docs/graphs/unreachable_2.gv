@@ -13,5 +13,5 @@ digraph {
 	func_main:f0->func_a:f0;
 	func_a:f0->func_b:f0;
 
-	func_c->func_d:f0 [label="called"];
+	func_c->func_d:f0 [label="used to call"];
 }
