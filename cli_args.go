@@ -56,7 +56,7 @@ func (args cli_args) evaluate() {
 	}
 
 	if args.list_uncalled {
-		fmt.Printf("%v", list_uncalled_funcs(fset, afps))
+		fmt.Printf("%v\n", list_uncalled_funcs(fset, afps))
 		os.Exit(0)
 	}
 
