@@ -11,6 +11,7 @@ type cli_args struct {
 	go_dir           string
 	entrypoint       string
 	list_entrypoints bool
+	list_unused      bool
 	version          bool
 }
 
@@ -23,6 +24,8 @@ func get_cli_args() cli_args {
 	flag.StringVar(&args.entrypoint, "entrypoint", "main", "entry point for the call tree")
 	flag.BoolVar(&args.list_entrypoints, "l", false, "list all possible entry points")
 	flag.BoolVar(&args.list_entrypoints, "list", false, "list all possible entry points")
+	flag.BoolVar(&args.list_unused, "u", false, "list all unused functions")
+	flag.BoolVar(&args.list_unused, "unused", false, "list all unused functions")
 	flag.BoolVar(&args.version, "V", false, "print version")
 	flag.BoolVar(&args.version, "version", false, "print version")
 	flag.Parse()
@@ -49,6 +52,11 @@ func (args cli_args) evaluate() {
 
 	if args.list_entrypoints {
 		fmt.Printf("%v\n", list_all_entrypoints(fset, afps))
+		os.Exit(0)
+	}
+
+	if args.list_unused {
+		fmt.Printf("%v\n", list_unused(fset, afps))
 		os.Exit(0)
 	}
 
