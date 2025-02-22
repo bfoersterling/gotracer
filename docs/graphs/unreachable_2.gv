@@ -1,0 +1,17 @@
+digraph {
+	edge [label="calls"];
+	node [shape=record style=filled fillcolor=lightgrey];
+
+	func_main [label="<f0>func main()|<f1>uncalled|<f2>reachable"];
+	func_a [label="<f0>func a()|<f1>called|<f2>reachable"];
+	func_b [label="<f0>func b()|<f1>called|<f2>reachable"];
+
+
+	func_c [label="-deleted function-"];
+	func_d [label="<f0>func d()|<f1>uncalled|<f2>unreachable"];
+
+	func_main:f0->func_a:f0;
+	func_a:f0->func_b:f0;
+
+	func_c->func_d:f0 [label="called"];
+}
