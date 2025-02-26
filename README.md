@@ -7,9 +7,8 @@ Does not support calls to external libraries.
 
 Download the latest release
 ```
-wget https://github.com/bfoersterling/gotracer/releases/latest/download/gotracer_linux_amd64 -O gotracer
-chmod +x gotracer
-sudo cp -v gotracer /usr/local/bin/.
+wget https://github.com/bfoersterling/gotracer/releases/latest/download/gotracer_linux_amd64 -O /tmp/gotracer
+sudo install -v -m 755 /tmp/gotracer /usr/local/bin/.
 ```
 
 Or build it:
