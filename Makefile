@@ -13,8 +13,7 @@ install:
 
 install_latest_release:
 	wget https://github.com/bfoersterling/gotracer/releases/latest/download/gotracer_linux_amd64 -O /tmp/${BINARY}
-	sudo chmod +x /tmp/${BINARY}
-	sudo mv -v /tmp/${BINARY} /usr/local/bin/.
+	sudo install -v -m 755 /tmp/${BINARY} /usr/local/bin/.
 
 clean:
 	go clean
