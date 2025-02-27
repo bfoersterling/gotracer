@@ -63,6 +63,21 @@ func (args *cli_args)parse() {
 	if len(info.Defs) != 119 {
 		t.Fatalf("There should be 119 info.Defs.\n")
 	}
+
+	// 3 - third party imports should return error
+
+	afps, fset, err = parse_dir_afps("test_files/cowsay")
+
+	if err != nil {
+		t.Fatalf("Parsing dir test_files/makefile_parser failed with err:\n"+
+			"%v\n", err)
+	}
+
+	info, err = get_type_info(fset, afps)
+
+	if err == nil {
+		t.Fatalf("An error should be returned when type checking third party imports.\n")
+	}
 }
 
 func Test_get_tree_string(t *testing.T) {
