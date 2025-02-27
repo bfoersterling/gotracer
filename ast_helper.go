@@ -78,3 +78,17 @@ func get_receiver(recv_types string) string {
 
 	return type_slice[1]
 }
+
+func has_nonstd_import(afps []*ast.File) bool {
+	for _, af := range afps {
+		for _, importspec := range af.Imports {
+			// Import paths for std pkgs do not seem to contain
+			// a dot. Imports from URLs need a dot.
+			if strings.Contains(importspec.Path.Value, ".") {
+				return true
+			}
+		}
+	}
+
+	return false
+}
