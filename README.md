@@ -88,6 +88,16 @@ That is the performance bottleneck.
 Writing a custom type checker for is currently not an option.
 
 Another option would be to use [pointer analysis](https://en.wikipedia.org/wiki/Pointer_analysis).
+But there is no stable implementation of this.\
+The [google x project](https://pkg.go.dev/golang.org/x/tools/go/pointer) is deprecated.
+
+#### Why Are Third Party Imports Not Supported?
+
+Go's type checker from std is not up to date with the go tool \
+due to backwards compatibility.\
+Temporarily setting `GOMODCACHE` to `GOROOT/src` might be an option.\
+Or creating a hidden subdir in the directory where `gotracer` parses files.\
+But this implementation does not provide a clean way to do it.
 
 ## TODO
 
