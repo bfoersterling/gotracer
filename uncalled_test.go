@@ -11,7 +11,14 @@ func Test_list_uncalled_funcs(t *testing.T) {
 		t.Fatalf("parse_dir_afps failed with err: %v\n", err)
 	}
 
-	result_string := list_uncalled_funcs(fset, afps)
+	fc, err := new_func_center(fset, afps)
+
+	if err != nil {
+		t.Fatalf("new_func_center failed with err:\n"+
+			"%v\n", err)
+	}
+
+	result_string := list_uncalled_funcs(fc)
 
 	expected_string := "dont_call_this\n" +
 		"never_used"
