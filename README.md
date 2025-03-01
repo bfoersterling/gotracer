@@ -1,7 +1,10 @@
 # gotracer
 
-A calltree for local Go projects.\
-Does not support calls to external libraries.
+A calltree for Go projects.\
+Does not support calls to third party libraries.
+
+This project was built using std only and can only be \
+used on std only Go projects.
 
 ## Installation
 
