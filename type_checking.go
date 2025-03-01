@@ -28,12 +28,12 @@ func get_type_info(fset *token.FileSet, afs []*ast.File) (*types.Info, error) {
 	// and get the package name from the ast.File
 	pkg_name := afs[0].Name.String()
 
-	if has_nonstd_import(afs) {
+	_, err = conf.Check(pkg_name, fset, afs, info)
+
+	if err != nil && has_nonstd_import(afs) {
 		err = fmt.Errorf("Non std imports are not supported.\n")
 		return info, err
 	}
-
-	_, err = conf.Check(pkg_name, fset, afs, info)
 
 	if err != nil {
 		err = fmt.Errorf("conf.Check failed: " + err.Error())
