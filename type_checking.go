@@ -14,6 +14,8 @@ import (
 // function. ("package path")
 // So this function should be used for local packages.
 func get_type_info(fset *token.FileSet, afs []*ast.File) (*types.Info, error) {
+	var err error
+
 	info := &types.Info{
 		Defs: make(map[*ast.Ident]types.Object),
 		Uses: make(map[*ast.Ident]types.Object),
@@ -26,7 +28,12 @@ func get_type_info(fset *token.FileSet, afs []*ast.File) (*types.Info, error) {
 	// and get the package name from the ast.File
 	pkg_name := afs[0].Name.String()
 
-	_, err := conf.Check(pkg_name, fset, afs, info)
+	_, err = conf.Check(pkg_name, fset, afs, info)
+
+	if err != nil && has_nonstd_import(afs) {
+		err = fmt.Errorf("Non std imports are not supported.\n")
+		return info, err
+	}
 
 	if err != nil {
 		err = fmt.Errorf("conf.Check failed: " + err.Error())

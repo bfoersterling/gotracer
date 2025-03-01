@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 type cli_args struct {
@@ -50,15 +51,25 @@ func (args cli_args) evaluate() {
 		log.Fatal(err)
 	}
 
+	fc, err := new_func_center(fset, afps)
+
+	if err != nil {
+		if strings.Contains(err.Error(), "Non std imports are not supported") {
+			fmt.Printf("%s: Third party imports are not supported.\n", os.Args[0])
+			os.Exit(11)
+		}
+		panic(err)
+	}
+
 	if args.list_entrypoints {
-		fmt.Printf("%v\n", list_all_entrypoints(fset, afps))
+		fmt.Printf("%v\n", list_all_entrypoints(fc))
 		os.Exit(0)
 	}
 
 	if args.list_uncalled {
-		fmt.Printf("%v\n", list_uncalled_funcs(fset, afps))
+		fmt.Printf("%v\n", list_uncalled_funcs(fc))
 		os.Exit(0)
 	}
 
-	verbose_calltree(fset, afps, args.entrypoint)
+	verbose_calltree(fc, args.entrypoint)
 }

@@ -39,17 +39,11 @@ func verbose_dirtree(fset *token.FileSet, afs []ast.File) {
 	tree(os.Stdout, "main", afs, "")
 }
 
-func verbose_calltree(fset *token.FileSet, afps []*ast.File, entrypoint string) {
-	func_center, err := new_func_center(fset, afps)
+func verbose_calltree(fc func_center, entrypoint string) {
+	fcalls, err := fc.get_fcalls()
 
 	if err != nil {
-		log.Fatalf("new_func_center() failed with err:\n%v\n", err)
-	}
-
-	fcalls, err := func_center.get_fcalls()
-
-	if err != nil {
-		log.Fatalf("func_center.get_fcalls() failed with err:\n%v\n", err)
+		log.Fatalf("fc.get_fcalls() failed with err:\n%v\n", err)
 	}
 
 	_, err = get_fcall_from_slice(fcalls, entrypoint)

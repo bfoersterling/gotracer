@@ -1,20 +1,12 @@
 package main
 
 import (
-	"go/ast"
-	"go/token"
 	"sort"
 	"strings"
 )
 
-func list_uncalled_funcs(fset *token.FileSet, afps []*ast.File) string {
+func list_uncalled_funcs(fc func_center) string {
 	uncalled_funcs := make([]string, 0)
-
-	fc, err := new_func_center(fset, afps)
-
-	if err != nil {
-		panic(err)
-	}
 
 	fcalls, err := fc.get_fcalls()
 

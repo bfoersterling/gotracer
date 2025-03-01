@@ -58,3 +58,29 @@ func Test_split_selectorstr(t *testing.T) {
 		t.Fatalf("Second elem of selector_slice should be Println.\n")
 	}
 }
+
+func Test_has_nonstd_import(t *testing.T) {
+	// 1
+	afps, _, err := parse_dir_afps("test_files/cowsay")
+
+	if err != nil {
+		t.Fatalf("parse_dir_afps failed with err:\n"+
+			"%s\n", err)
+	}
+
+	if !has_nonstd_import(afps) {
+		t.Fatalf("A non std import should be detected.\n")
+	}
+
+	// 2
+	afps, _, err = parse_dir_afps("test_files/makefile_parser")
+
+	if err != nil {
+		t.Fatalf("parse_dir_afps failed with err:\n"+
+			"%s\n", err)
+	}
+
+	if has_nonstd_import(afps) {
+		t.Fatalf("No non std import should be detected.\n")
+	}
+}
