@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 )
@@ -48,7 +47,11 @@ func (args cli_args) evaluate() {
 	afps, fset, err := parse_dir_afps(args.go_dir)
 
 	if err != nil {
-		log.Fatal(err)
+		if strings.Contains(err.Error(), "No .go files found") {
+			fmt.Printf("%s: %s", os.Args[0], err.Error())
+			os.Exit(1)
+		}
+		panic(err)
 	}
 
 	fc, err := new_func_center(fset, afps)
