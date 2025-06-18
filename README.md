@@ -1,6 +1,6 @@
 # gotracer
 
-A calltree for Go projects.\
+Prints the call graph of Go projects.\
 Does not support calls to third party libraries.
 
 This project was built using std only and can only be \
@@ -22,7 +22,7 @@ sudo make install
 
 ## Usage
 
-Show tree of Go function calls in the current dir:
+Show graph of Go function calls in the current dir:
 ```
 $ ./gotracer
 main
