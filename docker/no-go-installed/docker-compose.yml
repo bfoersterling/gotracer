@@ -1,0 +1,12 @@
+services:
+  no-go-gotracer:
+    build: "."
+    container_name: "no-go-gotracer"
+    tty: true
+    stdin_open: true
+
+# to run / go into interactive mode:
+# docker compose run no-go-gotracer
+
+# clean containers and images:
+# docker compose down --remove-orphans --rmi all
