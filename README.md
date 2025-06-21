@@ -103,3 +103,7 @@ But this implementation does not provide a clean way to do it.
 
 - option to list unreachable functions (needs correct entrypoint and will not work with external libs)
 - maybe include external calls
+
+## Copyright
+
+Copyright (c) 2025 [Björn Försterling](https://github.com/bfoersterling)
